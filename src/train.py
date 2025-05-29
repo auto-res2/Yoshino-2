@@ -65,7 +65,6 @@ class hiFiTLoRA_model(nn.Module):
         self.flatten = nn.Flatten(2)
         self.project = nn.Conv1d(16, 16, kernel_size=1)
         self.norm = DummyHiFiTLoRANorm(16)
-        self.unflatten = nn.Unflatten(2, (16, 16))
         self.decoder = nn.Sequential(
             nn.Conv2d(16, 3, kernel_size=3, padding=1),
             nn.Sigmoid()
@@ -79,7 +78,7 @@ class hiFiTLoRA_model(nn.Module):
         token_seq = proj.transpose(1,2)                # shape (B, H*W, C)
         normed = self.norm(token_seq)                  # apply LoRA normalized adaptation
         token_seq = normed.transpose(1,2)              # back (B, C, H*W)
-        unflat = self.unflatten(token_seq)             # shape (B, C, H, W)
+        unflat = token_seq.reshape(B, C, H, W)         # shape (B, C, H, W)
         recon = self.decoder(unflat)
         diffusion_steps = int(np.random.randint(1, 5))
         if return_diffusion_steps:
@@ -100,7 +99,6 @@ class baselineFiT_model(nn.Module):
         self.flatten = nn.Flatten(2)
         self.project = nn.Conv1d(16, 16, kernel_size=1)
         self.norm = DummyBaselineNorm(16)  # standard LayerNorm, no LoRA
-        self.unflatten = nn.Unflatten(2, (16, 16))
         self.decoder = nn.Sequential(
             nn.Conv2d(16, 3, kernel_size=3, padding=1),
             nn.Sigmoid()
@@ -114,7 +112,7 @@ class baselineFiT_model(nn.Module):
         token_seq = proj.transpose(1,2)
         normed = self.norm(token_seq)
         token_seq = normed.transpose(1,2)
-        unflat = self.unflatten(token_seq)
+        unflat = token_seq.reshape(B, C, H, W)
         recon = self.decoder(unflat)
         diffusion_steps = int(np.random.randint(1, 5))
         if return_diffusion_steps:
