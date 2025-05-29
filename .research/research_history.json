@@ -26,5 +26,8 @@
     "experimental_setup": "The model is trained on the ImageNet dataset with a maximum resolution limit of HW <= 256x256. Evaluation metrics include Fre'chet Inception Distance (FID), sFID, Inception Score (IS), Precision, and Recall. Experiments are conducted across various aspect ratios (1:1, 1:2, 1:3) and resolutions, both within and beyond the training distribution, to assess image synthesis and resolution extrapolation abilities.",
     "limitations": "The FiT-XL/2 model was trained for a limited number of steps (1.8M), and its performance at the training resolution of 256x256 is slightly inferior to DiT-XL/2, which had longer training. The generative capabilities of FiT-XL/2 with higher resolution training (larger token length limitation) haven't been thoroughly explored. The study primarily focuses on training-free resolution extrapolation techniques, without exploring methods that require additional training.",
     "future_research_directions": "Future research directions include exploring the generative capabilities of FiT with higher resolution training, investigating resolution extrapolation methods that require additional training, and further exploring the potential of FiT to handle arbitrary resolutions and aspect ratios."
-  }
+  },
+  "add_queries": [
+    "vision"
+  ]
 }
