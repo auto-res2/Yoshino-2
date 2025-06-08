@@ -24,5 +24,8 @@
     "experimental_setup": "The proposed DBC framework was evaluated on various continuous control tasks, including navigation (MAZE), robot arm manipulation (FETCH PICK), dexterous manipulation (HAND ROTATE), and locomotion (CHEETAH, WALKER, ANTREACH). The performance was compared against baselines like Behavioral Cloning (BC), Implicit BC (IBC), and Diffusion Policy. The evaluation metrics included success rate and return. The experiments also included ablation studies to justify design choices and generalization experiments by injecting noise into initial states and goal locations.",
     "limitations": "The proposed framework is designed to learn from expert trajectories without interacting with the environment, which means it cannot learn from agent trajectories. Additionally, the framework inherits any biases present in the expert demonstrations, which could lead to sub-optimal, unsafe, or discriminatory behaviors.",
     "future_research_directions": "Future research directions include extending the method to incorporate agent data, which could allow for improvement when interacting with the environment is possible. Addressing and mitigating the biases inherited from expert demonstrators is also a crucial area for future work."
-  }
+  },
+  "add_queries": [
+    "vision"
+  ]
 }
