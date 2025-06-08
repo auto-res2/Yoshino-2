@@ -1,5 +1,28 @@
 {
   "base_queries": [
     "diffusion model"
-  ]
+  ],
+  "base_github_url": "https://github.com/ikostrikov/pytorch-a2c-ppo-acktr-gail",
+  "base_method_text": {
+    "arxiv_id": "2302.13335v4",
+    "arxiv_url": "http://arxiv.org/abs/2302.13335v4",
+    "title": "Diffusion Model-Augmented Behavioral Cloning",
+    "authors": [
+      "Shang-Fu Chen",
+      "Hsiang-Chun Wang",
+      "Ming-Hao Hsu",
+      "Chun-Mao Lai",
+      "Shao-Hua Sun"
+    ],
+    "published_date": "2023-02-26T15:40:09Z",
+    "journal": "",
+    "doi": "",
+    "summary": "Imitation learning addresses the challenge of learning by observing an\nexpert's demonstrations without access to reward signals from environments.\nMost existing imitation learning methods that do not require interacting with\nenvironments either model the expert distribution as the conditional\nprobability p(a|s) (e.g., behavioral cloning, BC) or the joint probability p(s,\na). Despite the simplicity of modeling the conditional probability with BC, it\nusually struggles with generalization. While modeling the joint probability can\nimprove generalization performance, the inference procedure is often\ntime-consuming, and the model can suffer from manifold overfitting. This work\nproposes an imitation learning framework that benefits from modeling both the\nconditional and joint probability of the expert distribution. Our proposed\nDiffusion Model-Augmented Behavioral Cloning (DBC) employs a diffusion model\ntrained to model expert behaviors and learns a policy to optimize both the BC\nloss (conditional) and our proposed diffusion model loss (joint). DBC\noutperforms baselines in various continuous control tasks in navigation, robot\narm manipulation, dexterous manipulation, and locomotion. We design additional\nexperiments to verify the limitations of modeling either the conditional\nprobability or the joint probability of the expert distribution, as well as\ncompare different generative models. Ablation studies justify the effectiveness\nof our design choices.",
+    "github_url": "https://github.com/ikostrikov/pytorch-a2c-ppo-acktr-gail",
+    "main_contributions": "The paper introduces Diffusion Model-Augmented Behavioral Cloning (DBC), a novel imitation learning framework that combines the benefits of modeling both the conditional probability p(a|s) and the joint probability p(s, a) of expert behaviors. DBC uses a diffusion model to capture the joint distribution of expert state-action pairs and trains a policy to optimize both the behavioral cloning (BC) loss and a diffusion model loss. This approach aims to improve generalization and efficiency compared to existing imitation learning methods.",
+    "methodology": "The core methodology involves training a diffusion model to estimate the likelihood of state-action pairs from an expert dataset. This diffusion model then guides policy learning by optimizing a combined loss function. The loss function includes the standard behavioral cloning (BC) loss, which models the conditional probability p(a|s), and a diffusion model loss, which leverages the diffusion model's estimate of the joint probability p(s, a). The diffusion model is based on Denoising Diffusion Probabilistic Models (DDPMs).",
+    "experimental_setup": "The proposed DBC framework was evaluated on various continuous control tasks, including navigation (MAZE), robot arm manipulation (FETCH PICK), dexterous manipulation (HAND ROTATE), and locomotion (CHEETAH, WALKER, ANTREACH). The performance was compared against baselines like Behavioral Cloning (BC), Implicit BC (IBC), and Diffusion Policy. The evaluation metrics included success rate and return. The experiments also included ablation studies to justify design choices and generalization experiments by injecting noise into initial states and goal locations.",
+    "limitations": "The proposed framework is designed to learn from expert trajectories without interacting with the environment, which means it cannot learn from agent trajectories. Additionally, the framework inherits any biases present in the expert demonstrations, which could lead to sub-optimal, unsafe, or discriminatory behaviors.",
+    "future_research_directions": "Future research directions include extending the method to incorporate agent data, which could allow for improvement when interacting with the environment is possible. Addressing and mitigating the biases inherited from expert demonstrators is also a crucial area for future work."
+  }
 }
