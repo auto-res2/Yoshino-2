@@ -1,5 +1,28 @@
 {
   "base_queries": [
     "diffusion model"
-  ]
+  ],
+  "base_github_url": "https://github.com/ikostrikov/pytorch-a2c-ppo-acktr-gail",
+  "base_method_text": {
+    "arxiv_id": "2302.13335v4",
+    "arxiv_url": "http://arxiv.org/abs/2302.13335v4",
+    "title": "Diffusion Model-Augmented Behavioral Cloning",
+    "authors": [
+      "Shang-Fu Chen",
+      "Hsiang-Chun Wang",
+      "Ming-Hao Hsu",
+      "Chun-Mao Lai",
+      "Shao-Hua Sun"
+    ],
+    "published_date": "2023-02-26T15:40:09Z",
+    "journal": "",
+    "doi": "",
+    "summary": "Imitation learning addresses the challenge of learning by observing an\nexpert's demonstrations without access to reward signals from environments.\nMost existing imitation learning methods that do not require interacting with\nenvironments either model the expert distribution as the conditional\nprobability p(a|s) (e.g., behavioral cloning, BC) or the joint probability p(s,\na). Despite the simplicity of modeling the conditional probability with BC, it\nusually struggles with generalization. While modeling the joint probability can\nimprove generalization performance, the inference procedure is often\ntime-consuming, and the model can suffer from manifold overfitting. This work\nproposes an imitation learning framework that benefits from modeling both the\nconditional and joint probability of the expert distribution. Our proposed\nDiffusion Model-Augmented Behavioral Cloning (DBC) employs a diffusion model\ntrained to model expert behaviors and learns a policy to optimize both the BC\nloss (conditional) and our proposed diffusion model loss (joint). DBC\noutperforms baselines in various continuous control tasks in navigation, robot\narm manipulation, dexterous manipulation, and locomotion. We design additional\nexperiments to verify the limitations of modeling either the conditional\nprobability or the joint probability of the expert distribution, as well as\ncompare different generative models. Ablation studies justify the effectiveness\nof our design choices.",
+    "github_url": "https://github.com/ikostrikov/pytorch-a2c-ppo-acktr-gail",
+    "main_contributions": "This paper introduces Diffusion Model-Augmented Behavioral Cloning (DBC), a novel imitation learning framework that combines the benefits of modeling both the conditional probability p(a|s) and the joint probability p(s, a) of expert behaviors to improve generalization and efficiency. DBC uses a diffusion model trained on expert demonstrations and optimizes a policy using both the BC loss and a proposed diffusion model loss.",
+    "methodology": "The methodology involves training a diffusion model to capture the joint probability of expert state-action pairs. A policy is then trained to optimize a combined loss function consisting of the standard behavioral cloning (BC) loss and a diffusion model loss, which guides the policy towards actions that align with the expert distribution.",
+    "experimental_setup": "The proposed framework was evaluated on continuous control tasks, including navigation (MAZE), robot arm manipulation (FETCH PICK), dexterous manipulation (HAND ROTATE), and locomotion (CHEETAH, WALKER, ANTREACH). The method was compared against Behavioral Cloning (BC), Implicit BC (IBC), and Diffusion Policy using expert demonstrations. Performance was measured using success rate and return.",
+    "limitations": "The framework is designed to learn from expert trajectories without interacting with the environment and cannot learn from agent trajectories. The method also inherits any biases present in the expert demonstrations.",
+    "future_research_directions": "Future research could extend the method to incorporate agent data, potentially improving performance through interaction with the environment. Addressing the biases inherited from expert demonstrators is also an important direction."
+  }
 }
